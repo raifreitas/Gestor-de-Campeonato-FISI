@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:Futbol9_2"
         mc:Ignorable="d"
         Title="CAMPEONATO FISI UNAP" Height="450" Width="800">
-    
-    <Window.Resources>
 
+    <Window.Resources>
     </Window.Resources>
     
     <Grid>
