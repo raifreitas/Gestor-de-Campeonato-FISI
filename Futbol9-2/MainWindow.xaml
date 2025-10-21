@@ -1,0 +1,267 @@
+﻿<Window x:Class="Futbol9_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Futbol9_2"
+        mc:Ignorable="d"
+        Title="CAMPEONATO FISI UNAP" Height="450" Width="800">
+    
+    <Window.Resources>
+
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Menú fijo -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+                <MenuItem Header="Configuración del Campeonato" Click="AbrirConfiguracion"></MenuItem>
+                <MenuItem Header="Inscripciones y Pagos" Click="AbrirInscripciones"></MenuItem>
+                <MenuItem Header="Equipos" Click="AbrirEquipos"></MenuItem>
+                <MenuItem Header="Jugadores" Click="AbrirJugadores"></MenuItem>
+                <MenuItem Header="Grupos" Click="AbrirGrupos"></MenuItem>
+                <MenuItem Header="Calendario" Click="AbrirCalendario"></MenuItem>
+                <MenuItem Header="Partidos y Resultados" Click="AbrirPartidos"></MenuItem>
+                <MenuItem Header="Goles y Estadísticas" Click="AbrirGoles"></MenuItem>
+                <MenuItem Header="Tabla de Posiciones" Click="AbrirTabla"></MenuItem>
+            </Menu>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid>
+                <StackPanel x:Name="Configuracion" Visibility="Visible" Margin="20">
+                    <TextBlock Text="CONFIGURACIÓN DEL CAMPEONATO" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Datos generales -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Nombre del Campeonato:" Width="200"/>
+                        <TextBox Text="CAMPEONATO FISI UNAP CUP 2025" Width="300"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Fecha Inicio:" Width="200"/>
+                        <DatePicker SelectedDate="2025-10-10" Width="200"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,20">
+                        <TextBlock Text="Fecha Fin:" Width="200"/>
+                        <DatePicker SelectedDate="2025-11-09" Width="200"/>
+                    </StackPanel>
+
+                    <!-- Tipos de pago -->
+                    <TextBlock Text="TIPOS DE PAGO" FontWeight="Bold" Margin="0,10,0,5"/>
+                    <ListBox>
+                        <ListBoxItem Content="Efectivo"/>
+                        <ListBoxItem Content="Yape"/>
+                        <ListBoxItem Content="Plin"/>
+                    </ListBox>
+
+                    <!-- Estado de equipo y cancha -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="ESTADO DE EQUIPO" FontWeight="Bold"/>
+                            <ListBox>
+                                <ListBoxItem Content="Activo"/>
+                                <ListBoxItem Content="Debe"/>
+                                <ListBoxItem Content="Retirado"/>
+                            </ListBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="CANCHA" FontWeight="Bold"/>
+                            <TextBox Text="Colegio CNI"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Margin="10,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Estado del jugador -->
+                        <StackPanel Grid.Column="0" Margin="5">
+                            <TextBlock Text="ESTADO DE JUGADOR" FontWeight="Bold"/>
+                            <ListBox Height="100">
+                                <ListBoxItem Content="Activo"/>
+                                <ListBoxItem Content="Amarilla"/>
+                                <ListBoxItem Content="Roja"/>
+                                <ListBoxItem Content="Suspendido"/>
+                            </ListBox>
+                        </StackPanel>
+
+                        <!-- Calendario -->
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <TextBlock Text="CALENDARIO" FontWeight="Bold"/>
+                            <ListBox Height="100">
+                                <ListBoxItem Content="Programado"/>
+                                <ListBoxItem Content="Iniciado"/>
+                                <ListBoxItem Content="Finalizado"/>
+                                <ListBoxItem Content="Suspendido"/>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Grupos -->
+                    <StackPanel Margin="0,15,0,0">
+                        <TextBlock Text="GRUPOS" FontWeight="Bold"/>
+                        <ListBox Height="60">
+                            <ListBoxItem Content="A"/>
+                            <ListBoxItem Content="B"/>
+                        </ListBox>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel x:Name="InscripcionesPagos" Visibility="Collapsed" Margin="10">
+
+                    <TextBlock Text="INSCRIPCIONES Y PAGOS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- LISTA DE EQUIPOS INSCRITOS -->
+                    <TextBlock Text="Lista de Equipos Inscritos:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <DataGrid x:Name="dgEquiposInscritos" Height="150" AutoGenerateColumns="True" Margin="0,0,0,15"/>
+
+                    <!-- CAMPOS DE INSCRIPCIÓN/PAGO -->
+                    <TextBlock Text="Registrar Pago / Inscripción:" FontWeight="Bold" Margin="0,0,0,5"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="Equipo:" Width="120" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cbEquipo" Width="200"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="Monto / Tipo de Pago:" Width="120" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtMontoPago" Width="200"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <TextBlock Text="Método de Pago:" Width="120" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cbMetodoPago" Width="200">
+                            <ComboBoxItem Content="Efectivo"/>
+                            <ComboBoxItem Content="Yape"/>
+                            <ComboBoxItem Content="Plin"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- BOTONES DE ACCIÓN -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,5">
+                        <Button x:Name="btnRegistrarInscripcion" Content="Registrar Inscripción" Width="150" Margin="0,0,10,0" Click="btnRegistrarInscripcion_Click"/>
+                        <Button x:Name="btnVerificarDeuda" Content="Verificar Deuda" Width="120" Margin="0,0,10,0" Click="btnVerificarDeuda_Click"/>
+                        <Button x:Name="btnConfirmarPago" Content="Confirmar Pago" Width="120" Click="btnConfirmarPago_Click"/>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel x:Name="Equipos" Visibility="Collapsed" Margin="10">
+                    <TextBlock Text="EQUIPOS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <DataGrid x:Name="dgRegistroEquipos"
+                           AutoGenerateColumns="True"
+                           IsReadOnly="True"
+                           Margin="0, 10, 0, 0"
+                           Height="300"/>
+                </StackPanel>
+                <StackPanel x:Name="Jugadores" Visibility="Collapsed" Margin="10">
+                    <TextBlock Text="Jugadores" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+
+                </StackPanel>
+                <StackPanel x:Name="Grupos" Visibility="Collapsed" Margin="10">
+
+                    <TextBlock Text="GRUPOS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Selección de cantidad de grupos -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Cantidad de Grupos:" Width="150" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cbCantidadGrupos" Width="120">
+                            <ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="6"/>
+                            <ComboBoxItem Content="8"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Botón para generar sorteo automático -->
+                    <Button x:Name="btnGenerarGrupos" Content="Generar Sorteo Automático" Width="220" Height="30" Margin="0,0,0,15"/>
+
+                    <!-- Tabla o estructura para mostrar los grupos generados -->
+                    <TextBlock Text="Resultado del Sorteo:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <ItemsControl x:Name="panelGrupos">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="1" BorderBrush="Gray" Margin="0,0,0,10" Padding="10">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding NombreGrupo}" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <DataGrid ItemsSource="{Binding Equipos}" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Height="150">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="ID Equipo" Binding="{Binding IdEquipo}" Width="*"/>
+                                                <DataGridTextColumn Header="Nombre Equipo" Binding="{Binding NombreEquipo}" Width="2*"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock Text="Lista de Equipos por Grupo" FontWeight="Bold" Margin="0,10,0,5"/>
+                    <DataGrid x:Name="dgGrupos"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              Height="250">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Grupo" Binding="{Binding Grupo}" Width="60"/>
+                            <DataGridTextColumn Header="ID Equipo" Binding="{Binding IdEquipo}" Width="120"/>
+                            <DataGridTextColumn Header="Nombre Equipo" Binding="{Binding NombreEquipo}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Botón de confirmación -->
+                    <Button x:Name="btnConfirmarGrupos" Content="Confirmar y Bloquear Grupos" Width="220" Height="30" Margin="0,20,0,0"/>
+
+                </StackPanel>
+                <StackPanel x:Name="Calendario" Visibility="Collapsed" Margin="10">
+                    <TextBlock Text="CALENDARIO DE PARTIDOS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Opciones de filtro / fecha si quieres (vacío por ahora) -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Filtrar por Grupo:" Width="120" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cbFiltroGrupo" Width="120">
+                            <ComboBoxItem Content="Todos"/>
+                            <ComboBoxItem Content="A"/>
+                            <ComboBoxItem Content="B"/>
+                        </ComboBox>
+                        <!-- Puedes añadir controles de búsqueda/fecha aquí -->
+                    </StackPanel>
+
+                    <!-- DataGrid que mostrará el calendario -->
+                    <DataGrid x:Name="dgCalendario"
+              AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              IsReadOnly="True"
+              Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Partido" Binding="{Binding IdPartido}" Width="100"/>
+                            <DataGridTextColumn Header="Grupo" Binding="{Binding Grupo}" Width="60"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="110"/>
+                            <DataGridTextColumn Header="Hora" Binding="{Binding Hora}" Width="90"/>
+                            <DataGridTextColumn Header="Equipo Local" Binding="{Binding EquipoLocal}" Width="*"/>
+                            <DataGridTextColumn Header="Equipo Visitante" Binding="{Binding EquipoVisitante}" Width="*"/>
+                            <DataGridTextColumn Header="Cancha" Binding="{Binding Cancha}" Width="130"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100"/>
+                            <DataGridTextColumn Header="Descansa" Binding="{Binding Descansa}" Width="130"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel x:Name="PartidosResultados" Visibility="Collapsed" Margin="10"></StackPanel>
+                <StackPanel x:Name="GolesEstadisticas" Visibility="Collapsed" Margin="10"></StackPanel>
+                <StackPanel x:Name="TablaPosiciones" Visibility="Collapsed" Margin="10"></StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
