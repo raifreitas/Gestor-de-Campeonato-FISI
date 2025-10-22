@@ -8,6 +8,25 @@
         Title="CAMPEONATO FISI UNAP" Height="450" Width="800">
 
     <Window.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="RowBackground" Value="#FFF6F6F6"/>
+            <Setter Property="AlternatingRowBackground" Value="#FFE0E0E0"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="BorderBrush" Value="#FFCCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <!-- Estilo para los botones -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF1976D2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="BorderBrush" Value="#FF1565C0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
     </Window.Resources>
     
     <Grid>
@@ -159,15 +178,44 @@
                     <TextBlock Text="EQUIPOS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
 
                     <DataGrid x:Name="dgRegistroEquipos"
-                           AutoGenerateColumns="True"
-                           IsReadOnly="True"
-                           Margin="0, 10, 0, 0"
-                           Height="300"/>
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              Margin="0, 10, 0, 0"
+                              Height="400">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="60"/>
+                            <DataGridTextColumn Header="Nombre Equipo" Binding="{Binding NombreEquipo}" Width="*"/>
+                            <DataGridTextColumn Header="Delegado" Binding="{Binding Delegado}" Width="1.5*"/>
+                            <DataGridTextColumn Header="Móvil Delegado" Binding="{Binding MovilDelegado}" Width="120"/>
+                            <DataGridTextColumn Header="Forma de Pago" Binding="{Binding FormaDePago}" Width="100"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Monto}" Width="70"/>
+                            <DataGridTextColumn Header="Fecha Pago" Binding="{Binding FechaPago}" Width="100"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="80"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
                 <StackPanel x:Name="Jugadores" Visibility="Collapsed" Margin="10">
-                    <TextBlock Text="Jugadores" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock Text="Registro de Jugadores" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
 
-
+                    <DataGrid x:Name="dgJugadores"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              Margin="0,0,0,0"
+                              Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Equipo" Binding="{Binding NombreEquipo}" Width="*"/>
+                            <DataGridTextColumn Header="DNI" Binding="{Binding DNI}" Width="100"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*"/>
+                            <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="2*"/>
+                            <DataGridTextColumn Header="N°" Binding="{Binding Numero}" Width="50"/>
+                            <DataGridTextColumn Header="Móvil UNAP" Binding="{Binding MovilUnap}" Width="120"/>
+                            <DataGridTextColumn Header="Camiseta" Binding="{Binding Camiseta}" Width="80"/>
+                            <DataGridTextColumn Header="Posición" Binding="{Binding Posicion}" Width="120"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
                 <StackPanel x:Name="Grupos" Visibility="Collapsed" Margin="10">
 
@@ -256,9 +304,62 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
-                <StackPanel x:Name="PartidosResultados" Visibility="Collapsed" Margin="10"></StackPanel>
-                <StackPanel x:Name="GolesEstadisticas" Visibility="Collapsed" Margin="10"></StackPanel>
-                <StackPanel x:Name="TablaPosiciones" Visibility="Collapsed" Margin="10"></StackPanel>
+                <StackPanel x:Name="PartidosResultados" Visibility="Collapsed" Margin="10">
+                    <TextBlock Text="REGISTRO DE PARTIDOS Y RESULTADOS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Lista de Resultados de Partidos:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <DataGrid x:Name="dgResultadosPartidos"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Partido" Binding="{Binding IDPartido}" Width="100"/>
+                            <DataGridTextColumn Header="Equipo Local" Binding="{Binding EquipoLocal}" Width="*"/>
+                            <DataGridTextColumn Header="Goles Local" Binding="{Binding GolesLocal}" Width="100"/>
+                            <DataGridTextColumn Header="Equipo Visitante" Binding="{Binding EquipoVisitante}" Width="*"/>
+                            <DataGridTextColumn Header="Goles Visitante" Binding="{Binding GolesVisitante}" Width="110"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel x:Name="GolesEstadisticas" Visibility="Collapsed" Margin="10">
+                    <TextBlock Text="GOLES Y ESTADÍSTICAS" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <DataGrid x:Name="dgGolesEstadisticas"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Partido" Binding="{Binding IdPartido}" Width="100"/>
+                            <DataGridTextColumn Header="Equipo" Binding="{Binding Equipo}" Width="*"/>
+                            <DataGridTextColumn Header="DNI Jugador" Binding="{Binding DniJugador}" Width="120"/>
+                            <DataGridTextColumn Header="Minuto" Binding="{Binding Minuto}" Width="80"/>
+                            <DataGridTextColumn Header="Tipo Gol" Binding="{Binding TipoGol}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel x:Name="TablaPosiciones" Visibility="Collapsed" Margin="10">
+                    <TextBlock Text="TABLA DE POSICIONES" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <DataGrid x:Name="dgTablaPosiciones"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Grupo" Binding="{Binding Grupo}" Width="60"/>
+                            <DataGridTextColumn Header="Equipo" Binding="{Binding Equipo}" Width="*"/>
+                            <DataGridTextColumn Header="PJ" Binding="{Binding PJ}" Width="40"/>
+                            <DataGridTextColumn Header="PG" Binding="{Binding PG}" Width="40"/>
+                            <DataGridTextColumn Header="PE" Binding="{Binding PE}" Width="40"/>
+                            <DataGridTextColumn Header="PP" Binding="{Binding PP}" Width="40"/>
+                            <DataGridTextColumn Header="GF" Binding="{Binding GF}" Width="40"/>
+                            <DataGridTextColumn Header="GC" Binding="{Binding GC}" Width="40"/>
+                            <DataGridTextColumn Header="DG" Binding="{Binding DG}" Width="40"/>
+                            <DataGridTextColumn Header="PTS" Binding="{Binding PTS}" Width="50"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
             </Grid>
         </ScrollViewer>
     </Grid>
