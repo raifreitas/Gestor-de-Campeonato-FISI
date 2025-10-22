@@ -25,11 +25,6 @@ namespace Futbol9_2
             panel.Visibility = Visibility.Visible;
         }
 
-        private void AbrirConfiguracion(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnRegistrarInscripcion_Click(object sender, RoutedEventArgs e)
         {
 
