@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Futbol9_2"
         mc:Ignorable="d"
-        Title="CAMPEONATO FISI UNAP" Height="600" Width="900"
+        Title="GESTOR DE CAMPEONATOS FISI UNAP" Height="600" Width="900"
         Background="#FFEFEFEF"
         WindowStartupLocation="CenterScreen">
 
@@ -146,29 +146,33 @@
         </Style>
 
     </Window.Resources>
-
+    <!-- Contenedor Principal-->
     <TabControl>
 
         <TabItem Header="Configuración">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <StackPanel Margin="20" Grid.IsSharedSizeScope="True">
                     <TextBlock Text="CONFIGURACIÓN DEL CAMPEONATO" Style="{StaticResource Header}"/>
-
+                    
+                    <!--Seccion 1: Datos Generales-->
                     <Border Style="{StaticResource CardBorder}">
                         <StackPanel>
                             <TextBlock Text="Datos Generales" Style="{StaticResource SubHeader}"/>
                             <Grid>
+                                <!--Se definen 2 columnas, la primera es mas importante-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" SharedSizeGroup="LabelGroup"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
+                                <!--Se definen 3 filas-->
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
+                                <!--Se les da contenido y estilo a las filas y columnas-->
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Nombre Campeonato:" Style="{StaticResource FormLabel}"/>
                                 <TextBox Grid.Row="0" Grid.Column="1" Text="CAMPEONATO FISI UNAP CUP 2025" Width="300" HorizontalAlignment="Left"/>
 
@@ -180,13 +184,17 @@
                             </Grid>
                         </StackPanel>
                     </Border>
-
+                    
+                    <!--Seccion 2: Dos columnas (Tipos de Pago y Estado de Equipo)-->
                     <Grid>
+                        
+                        <!--Creamos 2 columnas de igual proporcion-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
+                        
+                        <!--LLenamos la columna 0 con contenido y su estilo-->
                         <Border Grid.Column="0" Style="{StaticResource CardBorder}" Margin="0,0,10,0">
                             <StackPanel>
                                 <TextBlock Text="Tipos de Pago" Style="{StaticResource SubHeader}"/>
@@ -198,6 +206,7 @@
                             </StackPanel>
                         </Border>
 
+                        <!--LLenamos la columna 1 con contenido y su estilo-->
                         <Border Grid.Column="1" Style="{StaticResource CardBorder}" Margin="10,0,0,0">
                             <StackPanel>
                                 <TextBlock Text="Estado de Equipo" Style="{StaticResource SubHeader}"/>
@@ -209,7 +218,8 @@
                             </StackPanel>
                         </Border>
                     </Grid>
-
+                    
+                    <!--Seccion 3: Creamos 2 columnas de igual proporcion y el flujo se repite...-->
                     <Grid Margin="0,15,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
