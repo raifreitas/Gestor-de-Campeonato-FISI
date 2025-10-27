@@ -422,6 +422,8 @@
         <TabItem Header="Calendario">
             <StackPanel Margin="20">
                 <TextBlock Text="CALENDARIO DE PARTIDOS" Style="{StaticResource Header}"/>
+                
+                <!--Sección 1: El Filtro-->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <TextBlock Text="Filtrar por Grupo:" Width="120" Style="{StaticResource FormLabel}"/>
                     <ComboBox x:Name="cbFiltroGrupo" Width="120">
@@ -431,17 +433,18 @@
                     </ComboBox>
                 </StackPanel>
 
-                <DataGrid x:Name="dgCalendario" Height="350">
+                <!--Sección 2: La Rejilla de Partidos-->
+                <DataGrid x:Name="dtgCalendario" Height="350">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Partido" Binding="{Binding IdPartido}" Width="100"/>
-                        <DataGridTextColumn Header="Grupo" Binding="{Binding Grupo}" Width="60"/>
-                        <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="110"/>
-                        <DataGridTextColumn Header="Hora" Binding="{Binding Hora}" Width="90"/>
-                        <DataGridTextColumn Header="Equipo Local" Binding="{Binding EquipoLocal}" Width="*"/>
-                        <DataGridTextColumn Header="Equipo Visitante" Binding="{Binding EquipoVisitante}" Width="*"/>
-                        <DataGridTextColumn Header="Cancha" Binding="{Binding Cancha}" Width="130"/>
-                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100"/>
-                        <DataGridTextColumn Header="Descansa" Binding="{Binding Descansa}" Width="130"/>
+                        <DataGridTextColumn Header="ID Partido" Width="*" Visibility="Collapsed"/>
+                        <DataGridTextColumn Header="Grupo" Width="*"/>
+                        <DataGridTextColumn Header="Fecha" Width="*"/>
+                        <DataGridTextColumn Header="Hora" Width="*"/>
+                        <DataGridTextColumn Header="Equipo Local" Width="*"/>
+                        <DataGridTextColumn Header="Equipo Visitante" Width="*"/>
+                        <DataGridTextColumn Header="Cancha" Width="*"/>
+                        <DataGridTextColumn Header="Estado" Width="*"/>
+                        <DataGridTextColumn Header="Descansa" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
@@ -451,14 +454,15 @@
             <StackPanel Margin="20">
                 <TextBlock Text="REGISTRO DE PARTIDOS Y RESULTADOS" Style="{StaticResource Header}"/>
                 <TextBlock Text="Lista de Resultados de Partidos:" Style="{StaticResource SubHeader}"/>
+                <!--dtg de los resultados-->
                 <DataGrid x:Name="dgResultadosPartidos" Height="350">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Partido" Binding="{Binding IDPartido}" Width="100"/>
-                        <DataGridTextColumn Header="Equipo Local" Binding="{Binding EquipoLocal}" Width="*"/>
-                        <DataGridTextColumn Header="Goles Local" Binding="{Binding GolesLocal}" Width="100"/>
-                        <DataGridTextColumn Header="Equipo Visitante" Binding="{Binding EquipoVisitante}" Width="*"/>
-                        <DataGridTextColumn Header="Goles Visitante" Binding="{Binding GolesVisitante}" Width="110"/>
-                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="120"/>
+                        <DataGridTextColumn Header="ID Partido" Width="100" Visibility="Collapsed"/>
+                        <DataGridTextColumn Header="Equipo Local" Width="*"/>
+                        <DataGridTextColumn Header="Goles Local" Width="*"/>
+                        <DataGridTextColumn Header="Equipo Visitante" Width="*"/>
+                        <DataGridTextColumn Header="Goles Visitante" Width="*"/>
+                        <DataGridTextColumn Header="Estado" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
@@ -467,13 +471,14 @@
         <TabItem Header="Goles y Estadísticas">
             <StackPanel Margin="20">
                 <TextBlock Text="GOLES Y ESTADÍSTICAS" Style="{StaticResource Header}"/>
+                <!--dtg de goles -->
                 <DataGrid x:Name="dgGolesEstadisticas" Height="350">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Partido" Binding="{Binding IdPartido}" Width="100"/>
-                        <DataGridTextColumn Header="Equipo" Binding="{Binding Equipo}" Width="*"/>
-                        <DataGridTextColumn Header="DNI Jugador" Binding="{Binding DniJugador}" Width="120"/>
-                        <DataGridTextColumn Header="Minuto" Binding="{Binding Minuto}" Width="80"/>
-                        <DataGridTextColumn Header="Tipo Gol" Binding="{Binding TipoGol}" Width="120"/>
+                        <DataGridTextColumn Header="ID Partido" Width="*" Visibility="Collapsed"/>
+                        <DataGridTextColumn Header="Equipo" Width="*"/>
+                        <DataGridTextColumn Header="DNI Jugador" Width="*"/>
+                        <DataGridTextColumn Header="Minuto" Width="*"/>
+                        <DataGridTextColumn Header="Tipo Gol" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
@@ -482,18 +487,19 @@
         <TabItem Header="Tabla de Posiciones">
             <StackPanel Margin="20">
                 <TextBlock Text="TABLA DE POSICIONES" Style="{StaticResource Header}"/>
+                <!--dtg de tabla de posiciones-->
                 <DataGrid x:Name="dgTablaPosiciones" Height="350">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Grupo" Binding="{Binding Grupo}" Width="60"/>
-                        <DataGridTextColumn Header="Equipo" Binding="{Binding Equipo}" Width="*"/>
-                        <DataGridTextColumn Header="PJ" Binding="{Binding PJ}" Width="40"/>
-                        <DataGridTextColumn Header="PG" Binding="{Binding PG}" Width="40"/>
-                        <DataGridTextColumn Header="PE" Binding="{Binding PE}" Width="40"/>
-                        <DataGridTextColumn Header="PP" Binding="{Binding PP}" Width="40"/>
-                        <DataGridTextColumn Header="GF" Binding="{Binding GF}" Width="40"/>
-                        <DataGridTextColumn Header="GC" Binding="{Binding GC}" Width="40"/>
-                        <DataGridTextColumn Header="DG" Binding="{Binding DG}" Width="40"/>
-                        <DataGridTextColumn Header="PTS" Binding="{Binding PTS}" Width="50"/>
+                        <DataGridTextColumn Header="Grupo" Width="60"/>
+                        <DataGridTextColumn Header="Equipo" Width="*"/>
+                        <DataGridTextColumn Header="PJ" Width="40"/>
+                        <DataGridTextColumn Header="PG" Width="40"/>
+                        <DataGridTextColumn Header="PE" Width="40"/>
+                        <DataGridTextColumn Header="PP" Width="40"/>
+                        <DataGridTextColumn Header="GF" Width="40"/>
+                        <DataGridTextColumn Header="GC" Width="40"/>
+                        <DataGridTextColumn Header="DG" Width="40"/>
+                        <DataGridTextColumn Header="PTS" Width="50"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

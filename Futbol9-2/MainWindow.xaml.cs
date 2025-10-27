@@ -20,10 +20,6 @@ namespace Futbol9_2
         {
             InitializeComponent();
         }
-        private void MostrarPanel(StackPanel panel)
-        {
-            panel.Visibility = Visibility.Visible;
-        }
 
         private void btnRegistrarInscripcion_Click(object sender, RoutedEventArgs e)
         {
