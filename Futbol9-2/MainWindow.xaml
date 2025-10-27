@@ -280,60 +280,63 @@
         </TabItem>
 
         <TabItem Header="Inscripciones y Pagos">
-            <StackPanel Margin="20">
-                <TextBlock Text="INSCRIPCIONES Y PAGOS" Style="{StaticResource Header}"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="20">
+                    <TextBlock Text="INSCRIPCIONES Y PAGOS" Style="{StaticResource Header}"/>
 
-                <!--Sección 1: La Rejilla de Datos (Mostrar Equipos)-->
-                <TextBlock Text="Lista de Equipos Inscritos:" Style="{StaticResource SubHeader}"/>
-                <DataGrid x:Name="dgEquiposInscritos" Height="150" AutoGenerateColumns="True" Margin="0,0,0,15"/>
+                    <!--Sección 1: La Rejilla de Datos (Mostrar Equipos)-->
+                    <TextBlock Text="Lista de Equipos Inscritos:" Style="{StaticResource SubHeader}"/>
+                    <DataGrid x:Name="dgEquiposInscritos" Height="150" AutoGenerateColumns="True" Margin="0,0,0,15"/>
 
-                <!--Sección 2: El Formulario de Registro (Registrar Pagos)-->
-                <TextBlock Text="Registrar Pago / Inscripción:" Style="{StaticResource SubHeader}"/>
+                    <!--Sección 2: El Formulario de Registro (Registrar Pagos)-->
+                    <TextBlock Text="Registrar Pago / Inscripción:" Style="{StaticResource SubHeader}"/>
 
-                <!--Equipo-->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <TextBlock Text="Equipo:" Width="120" Style="{StaticResource FormLabel}"/>
-                    <ComboBox x:Name="cbEquipo" Width="200"/>
+                    <!--Equipo-->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="Equipo:" Width="120" Style="{StaticResource FormLabel}"/>
+                        <ComboBox x:Name="cbEquipo" Width="200"/>
+                    </StackPanel>
+
+                    <!--monto de pago-->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="Monto:" Width="120" Style="{StaticResource FormLabel}"/>
+                        <TextBox x:Name="txtMontoPago" Width="200"/>
+                    </StackPanel>
+
+                    <!--metodo de pago-->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <TextBlock Text="Método de Pago:" Width="120" Style="{StaticResource FormLabel}"/>
+                        <ComboBox x:Name="cbMetodoPago" Width="200">
+                            <ComboBoxItem Content="Efectivo"/>
+                            <ComboBoxItem Content="Yape"/>
+                            <ComboBoxItem Content="Plin"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!--Sección 3: Los Botones de Acción-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,5">
+                        <Button x:Name="btnRegistrarInscripcion" Content="Registrar Inscripción" Width="150" Click="btnRegistrarInscripcion_Click"/>
+                        <Button x:Name="btnVerificarDeuda" Content="Verificar Deuda" Width="120" Click="btnVerificarDeuda_Click"/>
+                        <Button x:Name="btnConfirmarPago" Content="Confirmar Pago" Width="120" Click="btnConfirmarPago_Click"/>
+                    </StackPanel>
                 </StackPanel>
-
-                <!--monto de pago-->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <TextBlock Text="Monto:" Width="120" Style="{StaticResource FormLabel}"/>
-                    <TextBox x:Name="txtMontoPago" Width="200"/>
-                </StackPanel>
-
-                <!--metodo de pago-->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                    <TextBlock Text="Método de Pago:" Width="120" Style="{StaticResource FormLabel}"/>
-                    <ComboBox x:Name="cbMetodoPago" Width="200">
-                        <ComboBoxItem Content="Efectivo"/>
-                        <ComboBoxItem Content="Yape"/>
-                        <ComboBoxItem Content="Plin"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <!--Sección 3: Los Botones de Acción-->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,5">
-                    <Button x:Name="btnRegistrarInscripcion" Content="Registrar Inscripción" Width="150" Click="btnRegistrarInscripcion_Click"/>
-                    <Button x:Name="btnVerificarDeuda" Content="Verificar Deuda" Width="120" Click="btnVerificarDeuda_Click"/>
-                    <Button x:Name="btnConfirmarPago" Content="Confirmar Pago" Width="120" Click="btnConfirmarPago_Click"/>
-                </StackPanel>
-            </StackPanel>
+            </ScrollViewer>
         </TabItem>
 
         <TabItem Header="Equipos">
             <StackPanel Margin="20">
                 <TextBlock Text="EQUIPOS" Style="{StaticResource Header}"/>
                 <DataGrid x:Name="dgRegistroEquipos" Height="400">
+                    <!--Definición Manual de Columnas-->
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="60"/>
-                        <DataGridTextColumn Header="Nombre Equipo" Binding="{Binding NombreEquipo}" Width="*"/>
-                        <DataGridTextColumn Header="Delegado" Binding="{Binding Delegado}" Width="1.5*"/>
-                        <DataGridTextColumn Header="Móvil Delegado" Binding="{Binding MovilDelegado}" Width="120"/>
-                        <DataGridTextColumn Header="Forma de Pago" Binding="{Binding FormaDePago}" Width="100"/>
-                        <DataGridTextColumn Header="Monto" Binding="{Binding Monto}" Width="70"/>
-                        <DataGridTextColumn Header="Fecha Pago" Binding="{Binding FechaPago}" Width="100"/>
-                        <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="80"/>
+                        <DataGridTextColumn Header="ID" Width="*" Visibility="Collapsed"/>
+                        <DataGridTextColumn Header="Nombre Equipo" Width="*"/>
+                        <DataGridTextColumn Header="Delegado" Width="*"/>
+                        <DataGridTextColumn Header="Móvil Delegado" Width="*"/>
+                        <DataGridTextColumn Header="Forma de Pago" Width="*"/>
+                        <DataGridTextColumn Header="Monto" Width="*"/>
+                        <DataGridTextColumn Header="Fecha Pago" Width="*"/>
+                        <DataGridTextColumn Header="Estado" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
