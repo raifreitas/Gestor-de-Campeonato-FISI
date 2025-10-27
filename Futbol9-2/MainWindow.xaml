@@ -283,21 +283,26 @@
             <StackPanel Margin="20">
                 <TextBlock Text="INSCRIPCIONES Y PAGOS" Style="{StaticResource Header}"/>
 
+                <!--Sección 1: La Rejilla de Datos (Mostrar Equipos)-->
                 <TextBlock Text="Lista de Equipos Inscritos:" Style="{StaticResource SubHeader}"/>
                 <DataGrid x:Name="dgEquiposInscritos" Height="150" AutoGenerateColumns="True" Margin="0,0,0,15"/>
 
+                <!--Sección 2: El Formulario de Registro (Registrar Pagos)-->
                 <TextBlock Text="Registrar Pago / Inscripción:" Style="{StaticResource SubHeader}"/>
 
+                <!--Equipo-->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                     <TextBlock Text="Equipo:" Width="120" Style="{StaticResource FormLabel}"/>
                     <ComboBox x:Name="cbEquipo" Width="200"/>
                 </StackPanel>
 
+                <!--monto de pago-->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <TextBlock Text="Monto / Tipo de Pago:" Width="120" Style="{StaticResource FormLabel}"/>
+                    <TextBlock Text="Monto:" Width="120" Style="{StaticResource FormLabel}"/>
                     <TextBox x:Name="txtMontoPago" Width="200"/>
                 </StackPanel>
 
+                <!--metodo de pago-->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                     <TextBlock Text="Método de Pago:" Width="120" Style="{StaticResource FormLabel}"/>
                     <ComboBox x:Name="cbMetodoPago" Width="200">
@@ -307,6 +312,7 @@
                     </ComboBox>
                 </StackPanel>
 
+                <!--Sección 3: Los Botones de Acción-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,5">
                     <Button x:Name="btnRegistrarInscripcion" Content="Registrar Inscripción" Width="150" Click="btnRegistrarInscripcion_Click"/>
                     <Button x:Name="btnVerificarDeuda" Content="Verificar Deuda" Width="120" Click="btnVerificarDeuda_Click"/>
