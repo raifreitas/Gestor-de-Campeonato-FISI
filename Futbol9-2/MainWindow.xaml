@@ -340,8 +340,8 @@
                 <DataGrid x:Name="dtgEquipos" Height="400">
                     <!--Definición Manual de Columnas-->
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="*" Visibility="Collapsed"/>
-                        <DataGridTextColumn Header="Nombre Equipo" Width="*"/>
+                        <DataGridTextColumn Header="ID" Width="*" Visibility="Collapsed" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Header="Nombre Equipo" Width="*" Binding="{Binding NombreEquipo}"/>
                         <DataGridTextColumn Header="Delegado" Width="*"/>
                         <DataGridTextColumn Header="Móvil Delegado" Width="*"/>
                         <DataGridTextColumn Header="Forma de Pago" Width="*"/>
@@ -361,13 +361,12 @@
                 <DataGrid x:Name="dtgJugadores" Height="400">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Width="*" Visibility="Collapsed"/>
-                        <DataGridTextColumn Header="Equipo" Width="*"/>
+                        <DataGridTextColumn Header="Nombre de Equipo" Width="*"/>
                         <DataGridTextColumn Header="DNI" Width="*"/>
-                        <DataGridTextColumn Header="Nombre" Width="*"/>
                         <DataGridTextColumn Header="Apellidos" Width="*"/>
-                        <DataGridTextColumn Header="N°" Width="*"/>
-                        <DataGridTextColumn Header="Móvil UNAP"  Width="*"/>
-                        <DataGridTextColumn Header="Camiseta" Width="*"/>
+                        <DataGridTextColumn Header="Nombres" Width="*"/>
+                        <DataGridTextColumn Header="Número Movil" Width="*"/>
+                        <DataGridTextColumn Header="Numero Camiseta" Width="*"/>
                         <DataGridTextColumn Header="Posición" Width="*"/>
                         <DataGridTextColumn Header="Estado" Width="*"/>
                     </DataGrid.Columns>
@@ -430,37 +429,40 @@
         </TabItem>
 
         <TabItem Header="Calendario">
-            <StackPanel Margin="20">
-                <TextBlock Text="CALENDARIO DE PARTIDOS" Style="{StaticResource Header}"/>
-                
-                <!--Sección 1: El Filtro-->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <TextBlock Text="Filtrar por Grupo:" Width="120" Style="{StaticResource FormLabel}"/>
-                    <ComboBox x:Name="cbFiltroGrupo" Width="120">
-                        <ComboBoxItem Content="Todos"/>
-                        <ComboBoxItem Content="A"/>
-                        <ComboBoxItem Content="B"/>
-                    </ComboBox>
-                </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="CALENDARIO DE PARTIDOS" Style="{StaticResource Header}"/>
 
-                <!--Sección 2: La Rejilla de Partidos-->
-                <DataGrid x:Name="dtgCalendario" Height="350">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Partido" Width="*" Visibility="Collapsed"/>
-                        <DataGridTextColumn Header="Grupo" Width="*"/>
-                        <DataGridTextColumn Header="Fecha" Width="*"/>
-                        <DataGridTextColumn Header="Hora" Width="*"/>
-                        <DataGridTextColumn Header="Equipo Local" Width="*"/>
-                        <DataGridTextColumn Header="Equipo Visitante" Width="*"/>
-                        <DataGridTextColumn Header="Cancha" Width="*"/>
-                        <DataGridTextColumn Header="Estado" Width="*"/>
-                        <DataGridTextColumn Header="Descansa" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+                    <!--Sección 1: El Filtro-->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Filtrar por Grupo:" Width="120" Style="{StaticResource FormLabel}"/>
+                        <ComboBox x:Name="cbFiltroGrupo" Width="120">
+                            <ComboBoxItem Content="Todos"/>
+                            <ComboBoxItem Content="A"/>
+                            <ComboBoxItem Content="B"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!--Sección 2: La Rejilla de Partidos-->
+                    <DataGrid x:Name="dtgCalendario" Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Partido" Width="*" Visibility="Collapsed"/>
+                            <DataGridTextColumn Header="Grupo" Width="*"/>
+                            <DataGridTextColumn Header="Fecha" Width="*"/>
+                            <DataGridTextColumn Header="Hora" Width="*"/>
+                            <DataGridTextColumn Header="Equipo Local" Width="*"/>
+                            <DataGridTextColumn Header="Equipo Visitante" Width="*"/>
+                            <DataGridTextColumn Header="Cancha" Width="*"/>
+                            <DataGridTextColumn Header="Estado" Width="*"/>
+                            <DataGridTextColumn Header="Descansa" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
         </TabItem>
 
         <TabItem Header="Partidos y Resultados">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="20">
                 <TextBlock Text="REGISTRO DE PARTIDOS Y RESULTADOS" Style="{StaticResource Header}"/>
                 <TextBlock Text="Lista de Resultados de Partidos:" Style="{StaticResource SubHeader}"/>
@@ -476,44 +478,49 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
+            </ScrollViewer>
         </TabItem>
 
         <TabItem Header="Goles y Estadísticas">
-            <StackPanel Margin="20">
-                <TextBlock Text="GOLES Y ESTADÍSTICAS" Style="{StaticResource Header}"/>
-                <!--dtg de goles -->
-                <DataGrid x:Name="dgGolesEstadisticas" Height="350">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Partido" Width="*" Visibility="Collapsed"/>
-                        <DataGridTextColumn Header="Equipo" Width="*"/>
-                        <DataGridTextColumn Header="DNI Jugador" Width="*"/>
-                        <DataGridTextColumn Header="Minuto" Width="*"/>
-                        <DataGridTextColumn Header="Tipo Gol" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="GOLES Y ESTADÍSTICAS" Style="{StaticResource Header}"/>
+                    <!--dtg de goles -->
+                    <DataGrid x:Name="dgGolesEstadisticas" Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Partido" Width="*" Visibility="Collapsed"/>
+                            <DataGridTextColumn Header="Equipo" Width="*"/>
+                            <DataGridTextColumn Header="DNI Jugador" Width="*"/>
+                            <DataGridTextColumn Header="Minuto" Width="*"/>
+                            <DataGridTextColumn Header="Tipo Gol" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
         </TabItem>
 
         <TabItem Header="Tabla de Posiciones">
-            <StackPanel Margin="20">
-                <TextBlock Text="TABLA DE POSICIONES" Style="{StaticResource Header}"/>
-                <!--dtg de tabla de posiciones-->
-                <DataGrid x:Name="dgTablaPosiciones" Height="350">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Grupo" Width="60"/>
-                        <DataGridTextColumn Header="Equipo" Width="*"/>
-                        <DataGridTextColumn Header="PJ" Width="40"/>
-                        <DataGridTextColumn Header="PG" Width="40"/>
-                        <DataGridTextColumn Header="PE" Width="40"/>
-                        <DataGridTextColumn Header="PP" Width="40"/>
-                        <DataGridTextColumn Header="GF" Width="40"/>
-                        <DataGridTextColumn Header="GC" Width="40"/>
-                        <DataGridTextColumn Header="DG" Width="40"/>
-                        <DataGridTextColumn Header="PTS" Width="50"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="TABLA DE POSICIONES" Style="{StaticResource Header}"/>
+                    <!--dtg de tabla de posiciones-->
+                    <DataGrid x:Name="dgTablaPosiciones" Height="350">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Grupo" Width="60"/>
+                            <DataGridTextColumn Header="Equipo" Width="*"/>
+                            <DataGridTextColumn Header="PJ" Width="40"/>
+                            <DataGridTextColumn Header="PG" Width="40"/>
+                            <DataGridTextColumn Header="PE" Width="40"/>
+                            <DataGridTextColumn Header="PP" Width="40"/>
+                            <DataGridTextColumn Header="GF" Width="40"/>
+                            <DataGridTextColumn Header="GC" Width="40"/>
+                            <DataGridTextColumn Header="DG" Width="40"/>
+                            <DataGridTextColumn Header="PTS" Width="50"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
         </TabItem>
-
+        
     </TabControl>
 </Window>
