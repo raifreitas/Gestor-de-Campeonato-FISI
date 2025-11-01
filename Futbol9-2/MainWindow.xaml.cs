@@ -26,32 +26,13 @@ namespace Futbol9_2
         }
         private void CargarDatos()
         {
+            // Esta función ahora solo LEE de la base de datos.
             using (var context = new FutbolContext())
             {
-                if (!context.Equipos.Any())
-                {
-                    var equipo1 = new Equipo {
-                        NombreEquipo = "Los Ases de FISI",
-                        Delegado = "Rai Jair",
-                        Estado = "Activo",
-                        Monto = 150.00,
-                        FechaPago = DateTime.Now
-                    };
-                    var equipo2 = new Equipo {
-                        NombreEquipo = "Real Sistemas",
-                        Delegado = "Juan Pérez",
-                        Estado = "Debe",
-                        Monto = 100.00,
-                        FechaPago = DateTime.Now.AddDays(-1)
-                    };
-
-                    context.Equipos.Add(equipo1);
-                    context.Equipos.Add(equipo2);
-
-                    context.SaveChanges();
-                }
+                // 1. Lee la lista COMPLETA de equipos desde la BD SQL.
                 var listaDeEquipos = context.Equipos.ToList();
 
+                // 2. Muestra los datos en el DataGrid.
                 dtgEquipos.ItemsSource = listaDeEquipos;
             }
         }

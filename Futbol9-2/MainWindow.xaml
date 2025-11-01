@@ -342,12 +342,12 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Width="*" Visibility="Collapsed" Binding="{Binding ID}"/>
                         <DataGridTextColumn Header="Nombre Equipo" Width="*" Binding="{Binding NombreEquipo}"/>
-                        <DataGridTextColumn Header="Delegado" Width="*"/>
-                        <DataGridTextColumn Header="Móvil Delegado" Width="*"/>
-                        <DataGridTextColumn Header="Forma de Pago" Width="*"/>
-                        <DataGridTextColumn Header="Monto" Width="*"/>
-                        <DataGridTextColumn Header="Fecha Pago" Width="*"/>
-                        <DataGridTextColumn Header="Estado" Width="*"/>
+                        <DataGridTextColumn Header="Delegado" Width="*" Binding="{Binding Delegado}"/>
+                        <DataGridTextColumn Header="Móvil Delegado" Width="*" Binding="{Binding MovilDelDelegado}"/>
+                        <DataGridTextColumn Header="Forma de Pago" Width="*" Binding="{Binding FormaDePago}"/>
+                        <DataGridTextColumn Header="Monto" Width="*" Binding="{Binding Monto}"/>
+                        <DataGridTextColumn Header="Fecha Pago" Width="*" Binding="{Binding FechaPago}"/>
+                        <DataGridTextColumn Header="Estado" Width="*" Binding="{Binding Estado}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
